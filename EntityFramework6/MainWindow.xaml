@@ -10,6 +10,58 @@
         <local:MainMVVM/>
     </Window.DataContext>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox ItemsSource="{Binding BaseEntities}" HorizontalContentAlignment="Stretch" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding ID}" FontSize="14" FontWeight="Bold" Foreground="Crimson" VerticalAlignment="Stretch"  />
+                            <TextBlock Text=" . " FontSize="14" FontWeight="Bold" Foreground="Crimson" VerticalAlignment="Stretch" />
+                            <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="Bold" Foreground="Crimson" VerticalAlignment="Stretch" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Health : " Foreground="Crimson" FontSize="14" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Health}" Foreground="Crimson" FontSize="14" FontWeight="Bold" />
+                            </StackPanel>
+                            <ProgressBar Height="10" HorizontalAlignment="Stretch" Minimum="0" Maximum="100" Value="{Binding Health}" Foreground="Crimson"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Mana : " Foreground="BlueViolet" FontSize="14" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Mana}" Foreground="BlueViolet" FontSize="14" FontWeight="Bold" />
+                            </StackPanel>
+                            <ProgressBar Height="10" HorizontalAlignment="Stretch" Minimum="0" Maximum="100" Value="{Binding Mana}" Foreground="BlueViolet" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Attack : " Foreground="Crimson" FontSize="14" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Attack}" Foreground="Crimson" FontSize="14" FontWeight="Bold" />
+                            </StackPanel>
+                            <ProgressBar Height="10" HorizontalAlignment="Stretch" Minimum="0" Maximum="100" Value="{Binding Attack}" Foreground="Crimson" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

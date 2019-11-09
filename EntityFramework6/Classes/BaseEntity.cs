@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -9,14 +10,28 @@ using System.Threading.Tasks;
 namespace EntityFramework6.Classes
 {
     [Table("BaseEntity")]
-    class BaseEntity
+    public class BaseEntity : INotifyPropertyChanged
     {
+        #region Attributes
+        private int id;
+        private string name;
+        private int health;
+        private int attack;
+        private int mana;
+        #endregion
+
+        #region Properties
         [Key]
-        public int ID { get; internal set; }
-        public string Name { get; internal set; }
-        public int Health { get; internal set; }
-        public int Attack { get; internal set; }
-        public int Mana { get; internal set; }
+        public int ID { get => id; set { id = value; } }
+        public string Name { get => name; set { name = value; OnPropertyChanged("Name"); } }
+        public int Health { get => health; set { health = value; OnPropertyChanged("Health"); } }
+        public int Attack { get => attack; set { attack = value; OnPropertyChanged("Attack"); } }
+        public int Mana { get => mana; set { mana = value; OnPropertyChanged("Mana"); } }
+        #endregion
+
+        #region Events
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
 
         // constructor
         public BaseEntity() { }
@@ -28,8 +43,9 @@ namespace EntityFramework6.Classes
             Mana = mana;
         }
 
+
         #region Methods
-        
+
         /// <summary>
         /// Method from subtracting health
         /// </summary>
@@ -45,6 +61,13 @@ namespace EntityFramework6.Classes
             {
                 Health = Health - damage;
             }
+        }
+        #endregion
+
+        #region Event Methods
+        private void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
         #endregion
     }
