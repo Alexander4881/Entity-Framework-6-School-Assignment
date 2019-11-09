@@ -12,17 +12,20 @@ namespace EntityFramework6.Classes
     class BaseEntity
     {
         [Key]
+        public int ID { get; internal set; }
         public string Name { get; internal set; }
         public int Health { get; internal set; }
         public int Attack { get; internal set; }
+        public int Mana { get; internal set; }
 
         // constructor
         public BaseEntity() { }
-        public BaseEntity(string name, int health, int attack)
+        public BaseEntity(string name, int health, int attack, int mana)
         {
             Name = name;
             Health = health;
             Attack = attack;
+            Mana = mana;
         }
 
         #region Methods

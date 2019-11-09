@@ -15,6 +15,6 @@ namespace EntityFramework6.DatabaseAccessLayer
             Database.SetInitializer<EntityFrameworkContext>(new DropCreateDatabaseIfModelChanges<EntityFrameworkContext>());
         }
 
-        public DbSet<BaseEntity> Characters { get; set; }
+        public DbSet<BaseEntity> BaseEntitys { get; set; }
     }
 }

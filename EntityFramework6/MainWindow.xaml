@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:EntityFramework6"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainMVVM/>
+    </Window.DataContext>
     <Grid>
         
     </Grid>
