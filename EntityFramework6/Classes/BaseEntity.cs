@@ -18,15 +18,17 @@ namespace EntityFramework6.Classes
         private int health;
         private int attack;
         private int mana;
+        private Spell mySpell;
         #endregion
 
         #region Properties
         [Key]
         public int ID { get => id; set { id = value; } }
         public string Name { get => name; set { name = value; OnPropertyChanged("Name"); } }
-        public int Health { get => health; set { health = value; OnPropertyChanged("Health"); } }
-        public int Attack { get => attack; set { attack = value; OnPropertyChanged("Attack"); } }
-        public int Mana { get => mana; set { mana = value; OnPropertyChanged("Mana"); } }
+        public int Health { get => health; private set { health = value; OnPropertyChanged("Health"); } }
+        public int Attack { get => attack; protected set { attack = value; OnPropertyChanged("Attack"); } }
+        public int Mana { get => mana; internal set { mana = value; OnPropertyChanged("Mana"); } }
+        public Spell MySpell { get => mySpell; set => mySpell = value; }
         #endregion
 
         #region Events
@@ -35,12 +37,13 @@ namespace EntityFramework6.Classes
 
         // constructor
         public BaseEntity() { }
-        public BaseEntity(string name, int health, int attack, int mana)
+        public BaseEntity(string name, int health, int attack, int mana, Spell spell)
         {
             Name = name;
             Health = health;
             Attack = attack;
             Mana = mana;
+            MySpell = spell;
         }
 
 
