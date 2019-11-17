@@ -12,9 +12,10 @@ namespace EntityFramework6.DatabaseAccessLayer
     {
         public EntityFrameworkContext():base("EntityFramework6")
         {
-            Database.SetInitializer<EntityFrameworkContext>(new DropCreateDatabaseIfModelChanges<EntityFrameworkContext>());
+            Database.SetInitializer<EntityFrameworkContext>(new DropCreateDatabaseAlways<EntityFrameworkContext>());
         }
 
         public DbSet<BaseEntity> BaseEntitys { get; set; }
+        public DbSet<Spell> Spells { get; set; }
     }
 }

@@ -32,11 +32,23 @@ namespace EntityFramework6
             // use the data base
             using (var db = new EntityFrameworkContext())
             {
-                Spell fireball = new Spell("Fireball", 12, 10);
+                List<Spell> spells = new List<Spell>();
+                spells.Add(new Spell("Fireball", 12, 10));
+                spells.Add(new Spell("Water splash", 5, 5));
+                spells.Add(new Spell("Thunder Storm", 15, 10));
+                spells.Add(new Spell("Rock Slide", 15, 10));
+
+                foreach (Spell spell in spells)
+                {
+                    db.Spells.Add(spell);
+                }
+
+                db.SaveChanges();
+
                 //insert a new BaseEntity
                 for (int i = 1; i < 21; i++)
                 {
-                    BaseEntity baseEntity = new BaseEntity("BaseEntity", 100, 10 + i, 100,fireball);
+                    BaseEntity baseEntity = new BaseEntity("BaseEntity", 100, 10 + i, 100, spells);
                     db.BaseEntitys.Add(baseEntity);
                 }
 

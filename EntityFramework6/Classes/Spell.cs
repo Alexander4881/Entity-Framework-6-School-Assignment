@@ -22,13 +22,16 @@ namespace EntityFramework6.Classes
         public int ID { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
         public int Attack { get => attack; set => attack = value; }
-        public int ManaDrain { get => manaDrain; set => manaDrain = value; } 
-
-        ICollection<BaseEntity> BaseEntities { get; set; }
+        public int ManaDrain { get => manaDrain; set => manaDrain = value; }
+        public virtual ICollection<BaseEntity> BaseEntities { get; set; }
         #endregion
 
         #region Constructor
-        public Spell() { }
+        // constructor
+        public Spell() 
+        {
+            BaseEntities = new HashSet<BaseEntity>();
+        }
         public Spell(string name, int attack, int manaDrain)
         {
             Name = name;

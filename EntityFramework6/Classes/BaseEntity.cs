@@ -18,7 +18,7 @@ namespace EntityFramework6.Classes
         private int health;
         private int attack;
         private int mana;
-        private Spell mySpell;
+        private ICollection<Spell> mySpells;
         #endregion
 
         #region Properties
@@ -28,7 +28,7 @@ namespace EntityFramework6.Classes
         public int Health { get => health; private set { health = value; OnPropertyChanged("Health"); } }
         public int Attack { get => attack; protected set { attack = value; OnPropertyChanged("Attack"); } }
         public int Mana { get => mana; internal set { mana = value; OnPropertyChanged("Mana"); } }
-        public Spell MySpell { get => mySpell; set => mySpell = value; }
+        public virtual ICollection<Spell> MySpells { get => mySpells; set => mySpells = value; }
         #endregion
 
         #region Events
@@ -36,14 +36,17 @@ namespace EntityFramework6.Classes
         #endregion
 
         // constructor
-        public BaseEntity() { }
-        public BaseEntity(string name, int health, int attack, int mana, Spell spell)
+        public BaseEntity() 
+        {
+            MySpells = new HashSet<Spell>();
+        }
+        public BaseEntity(string name, int health, int attack, int mana, ICollection<Spell> spell)
         {
             Name = name;
             Health = health;
             Attack = attack;
             Mana = mana;
-            MySpell = spell;
+            MySpells = spell;
         }
 
 
