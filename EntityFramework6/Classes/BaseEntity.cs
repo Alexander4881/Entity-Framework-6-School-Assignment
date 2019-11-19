@@ -15,10 +15,10 @@ namespace EntityFramework6.Classes
         #region Attributes
         private int id;
         private string name;
+        private string type;
         private int health;
         private int attack;
         private int mana;
-        private Spell mySpell;
         #endregion
 
         #region Properties
@@ -28,7 +28,7 @@ namespace EntityFramework6.Classes
         public int Health { get => health; private set { health = value; OnPropertyChanged("Health"); } }
         public int Attack { get => attack; protected set { attack = value; OnPropertyChanged("Attack"); } }
         public int Mana { get => mana; internal set { mana = value; OnPropertyChanged("Mana"); } }
-        public Spell MySpell { get => mySpell; set => mySpell = value; }
+        public string Type { get => type; set => type = value; }
         #endregion
 
         #region Events
@@ -37,13 +37,12 @@ namespace EntityFramework6.Classes
 
         // constructor
         public BaseEntity() { }
-        public BaseEntity(string name, int health, int attack, int mana, Spell spell)
+        public BaseEntity(string name, int health, int attack, int mana)
         {
             Name = name;
             Health = health;
             Attack = attack;
             Mana = mana;
-            MySpell = spell;
         }
 
 
