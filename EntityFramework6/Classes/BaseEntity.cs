@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityFramework6.Interface;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace EntityFramework6.Classes
 {
     [Table("BaseEntity")]
-    public abstract class BaseEntity : INotifyPropertyChanged
+    public abstract class BaseEntity : INotifyPropertyChanged, IUniqueIdentifier
     {
         #region Attributes
         private int id;

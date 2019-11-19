@@ -77,6 +77,7 @@
     <Compile Include="Classes\Goblin.cs" />
     <Compile Include="Classes\Mage.cs" />
     <Compile Include="DatabaseAccessLayer\EntityFrameworkContext.cs" />
+    <Compile Include="Interface\IUniqueIdentifier.cs" />
     <Compile Include="MainMVVM.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
