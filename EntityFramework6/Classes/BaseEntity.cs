@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace EntityFramework6.Classes
 {
     [Table("BaseEntity")]
-    public class BaseEntity : INotifyPropertyChanged
+    public abstract class BaseEntity : INotifyPropertyChanged
     {
         #region Attributes
         private int id;
